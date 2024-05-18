@@ -1,0 +1,9 @@
+@import "@fontsource/cascadia-code";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Cascadia Code";
+  font-weight: 400;
+}

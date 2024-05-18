@@ -1,0 +1,212 @@
+[
+    {
+        "question": "What is the capital of Sri Lanka?",
+        "options": [
+            {
+                "answer": "Sri Jayawardenepura Kotte",
+                "isCorrect": true
+            },
+            {
+                "answer": "Colombo",
+                "isCorrect": false
+            },
+            {
+                "answer": "Kandy",
+                "isCorrect": false
+            },
+            {
+                "answer": "Galle",
+                "isCorrect": false
+            }
+        ]
+    },
+    {
+        "question": "What is the official language of Sri Lanka?",
+        "options": [
+            {
+                "answer": "Sinhala",
+                "isCorrect": true
+            },
+            {
+                "answer": "Tamil",
+                "isCorrect": true
+            },
+            {
+                "answer": "English",
+                "isCorrect": false
+            },
+            {
+                "answer": "Hindi",
+                "isCorrect": false
+            }
+        ]
+    },
+    {
+        "question": "Which ancient city is known for its well-preserved ruins of an ancient Sri Lankan civilization?",
+        "options": [
+            {
+                "answer": "Anuradhapura",
+                "isCorrect": true
+            },
+            {
+                "answer": "Polonnaruwa",
+                "isCorrect": false
+            },
+            {
+                "answer": "Sigiriya",
+                "isCorrect": false
+            },
+            {
+                "answer": "Dambulla",
+                "isCorrect": false
+            }
+        ]
+    },
+    {
+        "question": "What is the currency of Sri Lanka?",
+        "options": [
+            {
+                "answer": "Sri Lankan Rupee",
+                "isCorrect": true
+            },
+            {
+                "answer": "Indian Rupee",
+                "isCorrect": false
+            },
+            {
+                "answer": "Bangladeshi Taka",
+                "isCorrect": false
+            },
+            {
+                "answer": "Nepalese Rupee",
+                "isCorrect": false
+            }
+        ]
+    },
+    {
+        "question": "Which famous rock fortress is located in the central Matale District near the town of Dambulla in the Central Province of Sri Lanka?",
+        "options": [
+            {
+                "answer": "Sigiriya",
+                "isCorrect": true
+            },
+            {
+                "answer": "Galle Fort",
+                "isCorrect": false
+            },
+            {
+                "answer": "Adam's Peak",
+                "isCorrect": false
+            },
+            {
+                "answer": "Temple of the Tooth",
+                "isCorrect": false
+            }
+        ]
+    },
+    {
+        "question": "Which ocean surrounds Sri Lanka?",
+        "options": [
+            {
+                "answer": "Indian Ocean",
+                "isCorrect": true
+            },
+            {
+                "answer": "Pacific Ocean",
+                "isCorrect": false
+            },
+            {
+                "answer": "Atlantic Ocean",
+                "isCorrect": false
+            },
+            {
+                "answer": "Southern Ocean",
+                "isCorrect": false
+            }
+        ]
+    },
+    {
+        "question": "What is the national flower of Sri Lanka?",
+        "options": [
+            {
+                "answer": "Blue Water Lily",
+                "isCorrect": true
+            },
+            {
+                "answer": "Lotus",
+                "isCorrect": false
+            },
+            {
+                "answer": "Rose",
+                "isCorrect": false
+            },
+            {
+                "answer": "Sunflower",
+                "isCorrect": false
+            }
+        ]
+    },
+    {
+        "question": "Which UNESCO World Heritage Site is located in the Central Province of Sri Lanka and is known for its Sacred City?",
+        "options": [
+            {
+                "answer": "Kandy",
+                "isCorrect": true
+            },
+            {
+                "answer": "Galle",
+                "isCorrect": false
+            },
+            {
+                "answer": "Anuradhapura",
+                "isCorrect": false
+            },
+            {
+                "answer": "Polonnaruwa",
+                "isCorrect": false
+            }
+        ]
+    },
+    {
+        "question": "Which is the largest and most populous city in Sri Lanka?",
+        "options": [
+            {
+                "answer": "Colombo",
+                "isCorrect": true
+            },
+            {
+                "answer": "Kandy",
+                "isCorrect": false
+            },
+            {
+                "answer": "Jaffna",
+                "isCorrect": false
+            },
+            {
+                "answer": "Galle",
+                "isCorrect": false
+            }
+        ]
+    },
+    {
+        "question": "Which national park in Sri Lanka is famous for its large population of elephants?",
+        "options": [
+            {
+                "answer": "Yala National Park",
+                "isCorrect": false
+            },
+            {
+                "answer": "Udawalawe National Park",
+                "isCorrect": true
+            },
+            {
+                "answer": "Wilpattu National Park",
+                "isCorrect": false
+            },
+            {
+                "answer": "Sinharaja Forest Reserve",
+                "isCorrect": false
+            }
+        ]
+    }
+]
