@@ -1,13 +1,11 @@
-import './App.css'
-import Quiz from './pages/quize'
+import React from 'react'
+import Quiz from  './pages/quize'
 
-function App() {
-
-
+const App = () => {
   return (
-    <>
-      <Quiz />
-    </>
+    <div>
+      <Quiz/>
+    </div>
   )
 }
 
