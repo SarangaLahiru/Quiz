@@ -54,12 +54,13 @@ const Quiz = () => {
         await addDoc(collection(db, 'results'), { userName, score });
     };
 
-    const checkUserpass = async ()=>{
-        const check= await user.isUserSubmitted(userName)
+    const checkUserDone = async (u)=>{
+        const check= await user.isUserSubmitted(u)
         if (check){
             setUserExist(true)
         }
-
+        setCurrentQuizIndex(0)
+        
     }
 
     return (
@@ -75,7 +76,7 @@ const Quiz = () => {
                                     onChange={(e) => setUserName(e.target.value)}
                                     className=' text-4xl p-4'
                                 />
-                                <button style={{ backgroundColor: "#FCE300", color: "black" }} className=' p-4 text-4xl hover:bg-black hover:text-white active:bg-white active:text-black' onClick={() => setCurrentQuizIndex(0)}>Start Quiz</button>
+                                <button style={{ backgroundColor: "#FCE300", color: "black" }} className=' p-4 text-4xl hover:bg-black hover:text-white active:bg-white active:text-black' onClick={() => checkUserDone(userName)}>Start Quiz</button>
                             </div>
                         ) : isUserExist ? (
                             <div>
