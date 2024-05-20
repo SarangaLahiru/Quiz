@@ -1,5 +1,4 @@
 import { collection, getDocs, query, where,getFirestore } from "firebase/firestore";
-import { initializeApp } from "firebase/app";
 import { db } from "../firebase";
 
 const user = {
