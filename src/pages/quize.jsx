@@ -1,4 +1,4 @@
-import { addDoc, collection, getDocs } from 'firebase/firestore';
+import { addDoc, collection, getDocs, query, updateDoc, where } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
 import { db } from '../../firebase';
 import user from '../../utils/user_services';
@@ -19,9 +19,42 @@ const Quiz = () => {
             const quizList = quizSnapshot.docs.map(doc => doc.data());
             const shuffledQuizzes = quizList.sort(() => Math.random() - 0.5);
             setQuizzes(shuffledQuizzes);
+            sessionStorage.setItem('shuffledQuizzes', JSON.stringify(shuffledQuizzes));
         };
-        fetchQuizzes();
+
+        const storedQuizzes = JSON.parse(sessionStorage.getItem('shuffledQuizzes'));
+        if (storedQuizzes) {
+            setQuizzes(storedQuizzes);
+        } else {
+            fetchQuizzes();
+        }
     }, []);
+
+    useEffect(() => {
+        const storedQuizData = JSON.parse(sessionStorage.getItem('quizData'));
+        if (storedQuizData) {
+            setQuizzes(storedQuizData.quizzes);
+            setCurrentQuizIndex(storedQuizData.currentQuizIndex);
+            setScore(storedQuizData.score);
+            setUserName(storedQuizData.userName);
+            setTimeLeft(storedQuizData.timeLeft);
+            setIsSubmitted(storedQuizData.isSubmitted);
+        }
+    }, []);
+
+    useEffect(() => {
+        if (currentQuizIndex !== -1) {
+            const quizData = {
+                quizzes,
+                currentQuizIndex,
+                score,
+                userName,
+                timeLeft,
+                isSubmitted
+            };
+            sessionStorage.setItem('quizData', JSON.stringify(quizData));
+        }
+    }, [quizzes, currentQuizIndex, score, userName, timeLeft, isSubmitted]);
 
     useEffect(() => {
         let timer;
@@ -35,8 +68,22 @@ const Quiz = () => {
         return () => clearTimeout(timer);
     }, [timeLeft, currentQuizIndex, quizzes.length]);
 
-    const handleAnswer = (isCorrect) => {
-        if (isCorrect) setScore(score + 1);
+    const handleAnswer = async (isCorrect) => {
+        let newScore = score;
+        if (isCorrect) {
+            newScore++;
+        }
+        setScore(newScore);
+
+        const resultsRef = collection(db, 'results');
+        const querySnapshot = await getDocs(query(resultsRef, where('userName', '==', userName)));
+
+        if (!querySnapshot.empty) {
+            querySnapshot.forEach((doc) => {
+                updateDoc(doc.ref, { score: newScore });
+            });
+        }
+
         handleNext();
     };
 
@@ -51,20 +98,24 @@ const Quiz = () => {
 
     const handleSubmit = async () => {
         setIsSubmitted(true);
-        await addDoc(collection(db, 'results'), { userName, score });
+        sessionStorage.setItem('quizData', JSON.stringify({
+            quizzes,
+            currentQuizIndex,
+            score,
+            userName,
+            timeLeft,
+            isSubmitted: true
+        }));
     };
 
     const checkUserpass = async () => {
         const check = await user.isUserSubmitted(userName);
-        console.log(check)
-
         if (check) {
-            setUserExist(true)
-            alert("Username are already used")
-        }
-        else {
-            setCurrentQuizIndex(0)
-
+            setUserExist(true);
+            alert("Username is already used");
+        } else {
+            setCurrentQuizIndex(0);
+            await addDoc(collection(db, 'results'), { userName, score });
         }
     };
 
