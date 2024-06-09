@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Navigate } from 'react-router-dom'; // Import Navigate
 import { db } from '../../../firebase';
 import user from '../../../utils/user_services';
+import Navbar from '../../components/Navbar/Navbar';
 
 const StartScreen = () => {
     const [userName, setUserName] = useState('');
@@ -31,24 +32,22 @@ const StartScreen = () => {
 
     return (
         <>
-            <div className='m-auto w-full relative top-0 flex flex-wrap items-center justify-center h-screen bg-black'>
+        <Navbar />
+        <div className="flex flex-col items-center justify-center  bg-cover bg-center">
+            <img src="/images/first.png" alt="Centered Logo" className="w-3/4 md:w-1/2 mb-8" />
+            <div className="w-full max-w-xs md:max-w-md">
                 <input
                     type="text"
-                    placeholder="Enter your name"
+                    placeholder="Enter User Name"
                     value={userName}
                     onChange={(e) => setUserName(e.target.value)}
-                    className='text-4xl p-4 text-black'
+                    onKeyDown={checkUserpass}
+                    className="p-5 m-2 text-center bg-black text-white placeholder-gray-400"
+                    style={{ border: "3px #FCE300 solid", borderRadius: "12px", width: "100%", height: "64px", fontSize: "24px" }}
                 />
-                <button
-                    style={{ backgroundColor: "#FCE300", color: "black" }}
-                    className='p-4 text-4xl hover:bg-black hover:text-white active:bg-white active:text-black'
-                    onClick={checkUserpass}
-                >
-                    Start Quiz
-                </button>
             </div>
-        </>
-
+        </div>
+    </>
     );
 };
 
