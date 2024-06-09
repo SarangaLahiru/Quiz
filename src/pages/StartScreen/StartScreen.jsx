@@ -41,7 +41,11 @@ const StartScreen = () => {
                     placeholder="Enter User Name"
                     value={userName}
                     onChange={(e) => setUserName(e.target.value)}
-                    onKeyDown={checkUserpass}
+                    onKeyDown={(e) => {
+                        if (e.key === 'Enter') {
+                            checkUserpass();
+                        }
+                    }}
                     className="p-5 m-2 text-center bg-black text-white placeholder-gray-400"
                     style={{ border: "3px #FCE300 solid", borderRadius: "12px", width: "100%", height: "64px", fontSize: "24px" }}
                 />

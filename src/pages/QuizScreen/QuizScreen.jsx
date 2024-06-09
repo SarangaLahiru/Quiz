@@ -112,6 +112,8 @@ const QuizScreen = () => {
 
     const handleSubmit = async () => {
         setIsSubmitted(true);
+        console.log('Quiz submitted'); // Add this line for debugging
+        // Rest of the function
         sessionStorage.setItem('quizData', JSON.stringify({
             quizzes,
             currentQuizIndex,
