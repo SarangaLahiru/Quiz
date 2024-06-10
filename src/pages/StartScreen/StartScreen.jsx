@@ -16,7 +16,10 @@ const StartScreen = () => {
             if (check) {
                 alert("Username is already used");
             } else {
+
                 localStorage.setItem('userName', userName);
+
+                sessionStorage.clear();
                 await addDoc(collection(db, 'results'), { userName, score });
                 setRedirect(true); // Set redirect to true
             }
@@ -32,13 +35,13 @@ const StartScreen = () => {
 
     return (
         <>
-        <Navbar />
-        <div className="flex flex-col items-center justify-center  bg-cover bg-center">
+        <Navbar/>
+            <div className='flex flex-col items-center justify-center  bg-cover bg-center'>
             <img src="/images/first.png" alt="Centered Logo" className="w-3/4 md:w-1/2 mb-8" />
-            <div className="w-full max-w-xs md:max-w-md">
+          
                 <input
                     type="text"
-                    placeholder="Enter User Name"
+                    placeholder="Enter your name"
                     value={userName}
                     onChange={(e) => setUserName(e.target.value)}
                     onKeyDown={(e) => {
@@ -47,11 +50,13 @@ const StartScreen = () => {
                         }
                     }}
                     className="p-5 m-2 text-center bg-black text-white placeholder-gray-400"
-                    style={{ border: "3px #FCE300 solid", borderRadius: "12px", width: "100%", height: "64px", fontSize: "24px" }}
-                />
+                    style={{ border: "3px #FCE300 solid", borderRadius: "12px", width: "30%", height: "64px", fontSize: "24px" }}
+               />
+               
+                
             </div>
-        </div>
-    </>
+        </>
+
     );
 };
 

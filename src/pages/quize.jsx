@@ -1,32 +1,18 @@
-// Quiz.jsx
-
-import { collection, getDocs, query, updateDoc, where } from 'firebase/firestore';
+import { addDoc, collection, getDocs, query, updateDoc, where } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
-import { Navigate } from 'react-router-dom';
-import { db } from '../../../firebase';
+import { db } from '../../firebase';
+import user from '../../utils/user_services';
 
-
-
-const QuizScreen = () => {
+const Quiz = () => {
     const [quizzes, setQuizzes] = useState([]);
     const [currentQuizIndex, setCurrentQuizIndex] = useState(-1);
     const [score, setScore] = useState(0);
     const [userName, setUserName] = useState('');
     const [timeLeft, setTimeLeft] = useState(15);
     const [isSubmitted, setIsSubmitted] = useState(false);
+    const [isUserExist, setUserExist] = useState(false);
 
     useEffect(() => {
-        // Retrieve username from local storage
-        const storedUserName = localStorage.getItem('userName');
-        if (storedUserName) {
-            setUserName(storedUserName);
-            setCurrentQuizIndex(0);
-        } else {
-            // Handle case when username is not found in local storage
-            console.error("Username not found ");
-        }
-
-
         const fetchQuizzes = async () => {
             const quizCollection = collection(db, 'quizzes');
             const quizSnapshot = await getDocs(quizCollection);
@@ -116,25 +102,44 @@ const QuizScreen = () => {
             quizzes,
             currentQuizIndex,
             score,
-            userName,
+            userName, 
             timeLeft,
             isSubmitted: true
         }));
-        localStorage.setItem('userName', userName);
-        localStorage.setItem('score', score);
     };
 
-    // const startQuiz = (name) => {
-    //     setUserName(name);
-    //     setCurrentQuizIndex(0);
-    // };
+    const checkUserpass = async () => {
+        const check = await user.isUserSubmitted(userName);
+        if (check) {
+            setUserExist(true);
+            alert("Username is already used");
+        } else {
+            setCurrentQuizIndex(0);
+            await addDoc(collection(db, 'results'), { userName, score });
+        }
+    };
 
     return (
         <div className='bg-black w-full h-screen text-white'>
             {!isSubmitted ? (
                 <div>
                     {currentQuizIndex === -1 ? (
-                        <h2>something went wrong!</h2>
+                        <div className='m-auto w-fit relative top-96 flex flex-wrap items-center justify-center'>
+                            <input
+                                type="text"
+                                placeholder="Enter your name"
+                                value={userName}
+                                onChange={(e) => setUserName(e.target.value)}
+                                className='text-4xl p-4 text-black'
+                            />
+                            <button
+                                style={{ backgroundColor: "#FCE300", color: "black" }}
+                                className='p-4 text-4xl hover:bg-black hover:text-white active:bg-white active:text-black'
+                                onClick={checkUserpass}
+                            >
+                                Start Quiz
+                            </button>
+                        </div>
                     ) : (
                         currentQuizIndex >= 0 && currentQuizIndex < quizzes.length && (
                             <div className='m-auto w-fit relative top-24'>
@@ -167,11 +172,10 @@ const QuizScreen = () => {
                 <div className='text-center text-4xl'>
                     <h2>Quiz completed!</h2>
                     <p>{userName}, your score is: {score}</p>
-                    <Navigate to='/result' />
                 </div>
             )}
         </div>
     );
 };
 
-export default QuizScreen;
+export default Quiz;
