@@ -9,7 +9,7 @@ import StartScreen from './pages/StartScreen/StartScreen';
 
 const App = () => {
   return (
-    <div className=''>
+    <div className='appcontainer'>
       <Router>
         <Routes>
           <Route path="/" element={< StartScreen />} />

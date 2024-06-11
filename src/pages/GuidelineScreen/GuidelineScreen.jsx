@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import droidsImage from '../../assets/droids.png';
 import background from '../../assets/background.png';
 import '../../index.css';
-import Footer from '../../components/footer';
+import Footer from '../../components/Footer/Footer';
 
 
 const GuidelineScreen = () => {
