@@ -5,6 +5,7 @@ import GuidelineScreen from './pages/GuidelineScreen/GuidelineScreen';
 import QuizScreen from './pages/QuizScreen/QuizScreen';
 import ResultScreen from './pages/ResultScreen/ResultScreen';
 import StartScreen from './pages/StartScreen/StartScreen';
+import CongratsScreen from './pages/CongratsScreen/CongratsScreen'
 
 
 const App = () => {
@@ -16,6 +17,7 @@ const App = () => {
           <Route path="/guidelines" element={<GuidelineScreen />} />
           <Route path="/quiz" element={<QuizScreen />} />
           <Route path="/result" element={<ResultScreen />} />
+          <Route path="/congrats" element={<CongratsScreen/>}/>
         </Routes>
       </Router>
     </div>
