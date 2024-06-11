@@ -173,7 +173,7 @@ const QuizScreen = () => {
                 <div className='text-center text-4xl'>
                     <h2>Quiz completed!</h2>
                     <p>{userName}, your score is: {score}</p>
-                    <Navigate to='/result' />
+                    <Navigate to='/congrats' />
                 </div>
             )}
         </div>
