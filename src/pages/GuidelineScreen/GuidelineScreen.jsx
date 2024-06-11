@@ -34,7 +34,7 @@ const GuidelineScreen = () => {
                 </p>
 
                 <button
-                    className="py-3 px-10 bg-[#FCE300] text-black font-medium rounded-md hover:bg-[#FCE300]  mx-auto block mb-4"
+                    className="py-3 px-10 -mt-10 bg-[#FCE300] text-black font-medium rounded-md hover:bg-[#FCE300]  mx-auto block mb-4"
                     onClick={() => navigate('/quiz')}
                     style={{
                         fontFamily: 'Cascadia Code',

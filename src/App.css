@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@font-face {
+    font-family: 'Star-Jedi';
+    src: local(StarJedi) ,url('./components/font/Starjhol.ttf') format('truetype');
+  }
 body, html {
     margin: 0;
     padding: 0;
