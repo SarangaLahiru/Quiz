@@ -37,7 +37,7 @@ const StartScreen = () => {
         <>
         <Navbar/>
             <div className='flex flex-col items-center justify-center  bg-cover bg-center'>
-            <img src="/images/first.png" alt="Centered Logo" className="w-3/4 md:w-1/2 mb-8" />
+            <img src="/images/first.png" alt="Centered Logo" className="w-3/4 md:w-1/2 md:mt-9 mt-36 mb-8" />
           
                 <input
                     type="text"
@@ -49,8 +49,8 @@ const StartScreen = () => {
                             checkUserpass();
                         }
                     }}
-                    className="p-5 m-2 text-center bg-black text-white placeholder-gray-400"
-                    style={{ border: "3px #FCE300 solid", borderRadius: "12px", width: "30%", height: "64px", fontSize: "24px" }}
+                    className="p-5 m-2 text-center bg-black text-white placeholder-gray-400 md:text-xl md:w-[420px] w-[270px] md:mt-0 mt-16 text-sm"
+                    style={{ border: "3px #FCE300 solid", borderRadius: "12px",height: "64px", fontSize: "24px" } }
                />
                
                 

@@ -6,22 +6,22 @@ const GuidelineScreen = () => {
     const navigate = useNavigate();
 
     return (
-        <>
-            <div className="flex flex-col items-center justify-center min-h-screen text-yellow-400 p-4">
-                <h1 className="text-center text-[155px] leading-[247.33px]" style={{ fontFamily: 'Star-Jedi', fontSize: '155px', fontWeight: 400, marginBottom: '-30px' }}>
+        < div className='overflow-x-hidden'>
+            <div className=" flex flex-col items-center justify-center min-h-screen text-yellow-400 p-4">
+                <h1 className="text-center  text-[80px] md:text-[155px] leading-[247.33px] md:-mb-7 -mb-16" style={{ fontFamily: 'Star-Jedi',  fontWeight: 400 }}>
                     START
                 </h1>
-                <p className="text-xl text-white" style={{ fontFamily: 'Roboto', fontSize: '32px', fontWeight: 700, marginTop: '-20px' }}>
+                <p className="text-[15px] md:text-[20px] text-white" style={{ fontFamily: 'Roboto', fontWeight: 700, marginTop: '-20px' }}>
                     HOW MUCH OF THE GEEK ARE YOU?
                 </p>
-                <h1 className="text-center text-[155px] leading-[247.33px]" style={{ fontFamily: 'Star-Jedi', fontSize: '155px', fontWeight: 400, marginTop: '-80px', marginBottom: '80px' }}>
+                <h1 className="text-center text-[80px] md:text-[155px] leading-[247.33px] md:-mt-16 -mt-24 md:mb-2 -mb-28" style={{ fontFamily: 'Star-Jedi', fontWeight: 400, marginBottom: '80px' }}>
                     QUKZ
                 </h1>
                 <p
-                    className="text-lg mb-8 text-white"
+                    className="text-[24px] md:text-4xl -mt-28 text-white"
                     style={{
                         fontFamily: 'Cascadia Code',
-                        fontSize: '44px',
+                      
                         fontWeight: 400,
                         lineHeight: '52.81px',
                         textAlign: 'center',
@@ -34,11 +34,11 @@ const GuidelineScreen = () => {
                 </p>
 
                 <button
-                    className="py-3 px-10 -mt-10 bg-[#FCE300] text-black font-medium rounded-md hover:bg-[#FCE300]  mx-auto block mb-4"
+                    className="py-3 px-10 text-xl md:text-2xl  -mt-10 bg-[#FCE300] text-black font-medium rounded-md hover:bg-[#FCE300]  mx-auto block mb-4"
                     onClick={() => navigate('/quiz')}
                     style={{
                         fontFamily: 'Cascadia Code',
-                        fontSize: '24px',
+                        
                         fontWeight: 'bold',
                         lineHeight: '41.84px',
                         textAlign: 'justify',
@@ -49,12 +49,12 @@ const GuidelineScreen = () => {
                 </button>
 
                 <div className="w-full flex items-center justify-center">
-                    <div className="bg-gray-900 bg-opacity-50 w-11/12 text-white p-4 rounded-lg shadow-lg flex flex-col lg:flex-row items-center justify-between">
+                    <div className="bg-gray-900 bg-opacity-50 md:w-11/12 w-10/12 text-white p-4 rounded-lg shadow-lg flex flex-col lg:flex-row items-center justify-between">
                         <ul
-                            className="lg:flex-[3] flex-1 ml-5 space-y-6 text-left"
+                            className="lg:flex-[3] text-sm md:text-2xl flex-1 ml-5 space-y-6 text-left"
                             style={{
                                 fontFamily: 'Cascadia Code',
-                                fontSize: '24px',
+                               
                                 fontWeight: 400,
                                 lineHeight: '41.84px',
                                 textAlign: 'justify',
@@ -79,7 +79,7 @@ const GuidelineScreen = () => {
                             </li>
                         </ul>
                         <div className="lg:flex-[1] flex-1 ml-0 lg:ml-4 mt-4 lg:mt-0 flex justify-center lg:justify-end">
-                            <img src="./images/droids.png" alt="Droids" className="h-[350px] w-[500px]" />
+                            <img src="./images/droids.png" alt="Droids" className="h-[250px] w-[400px] md:h-[350px] md:w-[500px]" />
                         </div>
                     </div>
                 </div>
@@ -90,17 +90,17 @@ const GuidelineScreen = () => {
             <Footer />
             <br/>
             <div>
-            <h1 className='flex justify-center'  
+            <h1 className='flex justify-center text-sm md:text-lg'  
              style={{
                         fontFamily: 'Cascadia Code',
-                        fontSize: '24px',
+                     
                         fontWeight: 'bold',
                         lineHeight: '41.84px',
                         textAlign: 'justify',
                         color: 'White',
                     }}>- WIE AFFINITY GROUP OF SUSL -</h1>
                     </div>
-        </>
+        </div>
     );
 };
 

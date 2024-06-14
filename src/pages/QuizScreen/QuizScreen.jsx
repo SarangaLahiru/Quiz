@@ -1,12 +1,8 @@
-// Quiz.jsx
-
 import { collection, getDocs, query, updateDoc, where } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import { db } from '../../../firebase';
 import Navbar from '../../components/Navbar/Navbar';
-
-
 
 const QuizScreen = () => {
     const [quizzes, setQuizzes] = useState([]);
@@ -17,16 +13,13 @@ const QuizScreen = () => {
     const [isSubmitted, setIsSubmitted] = useState(false);
 
     useEffect(() => {
-        // Retrieve username from local storage
         const storedUserName = localStorage.getItem('userName');
         if (storedUserName) {
             setUserName(storedUserName);
             setCurrentQuizIndex(0);
         } else {
-            // Handle case when username is not found in local storage
             console.error("Username not found ");
         }
-
 
         const fetchQuizzes = async () => {
             const quizCollection = collection(db, 'quizzes');
@@ -125,59 +118,53 @@ const QuizScreen = () => {
         localStorage.setItem('score', score);
     };
 
-    // const startQuiz = (name) => {
-    //     setUserName(name);
-    //     setCurrentQuizIndex(0);
-    // };
-
     return (
         <>
-        <Navbar/>
-        <div className=' w-full -mt-32 h-screen text-white'>
-            {!isSubmitted ? (
-                <div>
-                    {currentQuizIndex === -1 ? (
-                        <h2>something went wrong!</h2>
-                    ) : (
-                        currentQuizIndex >= 0 && currentQuizIndex < quizzes.length && (
-                            <div className='m-auto w-fit relative top-24'>
-                                <h2 className='text-center' style={{ fontSize: "86px" }}>00 : {timeLeft}</h2>
-                            <div className='bg-gray-900 bg-opacity-50 mx-5 mb-4 text-white p-4 rounded-lg'>
-                                <h3 style={{ fontSize: "32px", maxWidth: "1220px" }} className='m-auto'>{quizzes[currentQuizIndex].question}</h3>
-                                <div className='ml-32 mt-10 mb-4'>
-                                    {quizzes[currentQuizIndex].options.map((option, index) => (
-                                        <button
-                                            className='m-2 active:bg-white active:text-black'
-                                            style={{ border: "3px #FCE300 solid", borderRadius: "12px", width: "600px", height: "96px", fontSize: "28px" }}
-                                            key={index}
-                                            onClick={() => handleAnswer(option.isCorrect)}
-                                        >
-                                            {option.answer}
-                                        </button>
-                                    ))}
-                                   </div> 
-                                  
-                                </div>
-                                <button
+            <Navbar/>
+            <div className='w-full -mt-32 h-screen text-white overflow-x-hidden'>
+                {!isSubmitted ? (
+                    <div>
+                        {currentQuizIndex === -1 ? (
+                            <h2>something went wrong!</h2>
+                        ) : (
+                            currentQuizIndex >= 0 && currentQuizIndex < quizzes.length && (
+                                <div className='m-auto w-fit relative top-24'>
+                                    <h2 className='text-center mt-8 md:mt-8 text-[50px] md:text-[70px]' style={{  }}>00 : {timeLeft}</h2>
+                                    <h3 className='text-center text-[30px] md:text-[30px] mr-2' style={{ color: '#FCE300' }}>Question No {currentQuizIndex + 1}/250</h3> {/* New part */}
+                                    <div className='bg-gray-900 md:w-[1200px] w-[370px] bg-opacity-50 mx-5 mb-4 text-white p-4 rounded-lg'>
+                                        <h3 style={{  maxWidth: "1220px" }} className='m-auto text-[28px] md:text-[32px]'>{quizzes[currentQuizIndex].question}</h3>
+                                        <div className='md:ml-32 m-2   mt-10 mb-4'>
+                                            {quizzes[currentQuizIndex].options.map((option, index) => (
+                                                <button
+                                                    className='m-2  active:bg-white active:text-black md:w-[400px] w-[300px] text-[20px] md:text-xl'
+                                                    style={{ border: "3px #FCE300 solid", borderRadius: "12px",  height: "96px" }}
+                                                    key={index}
+                                                    onClick={() => handleAnswer(option.isCorrect)}
+                                                >
+                                                    {option.answer}
+                                                </button>
+                                            ))}
+                                        </div>
+                                    </div>
+                                    <button
                                         onClick={handleNext}
                                         style={{ width: "457px", height: "80px", borderRadius: "12px", backgroundColor: "#FCE300", fontSize: "36px" }}
-                                        className='text-black m-auto pt-3  flex justify-center'
+                                        className='text-black mx-3 pt-3 flex justify-center'
                                     >
                                         Next Question
                                     </button>
-                            </div>
-                        )
-                    )}
-                </div>
-            ) : (
-                <div className='text-center text-4xl'>
-                    <h2>Quiz completed!</h2>
-                    <p>{userName}, your score is: {score}</p>
-                    <Navigate to='/congrats' />
-                </div>
-            )}
-        </div>
-
+                                </div>
+                            )
+                        )}
+                    </div>
+                ) : (
+                    <div className='text-center text-4xl'>
+                        <h2>Quiz completed!</h2>
+                        <p>{userName}, your score is: {score}</p>
+                        <Navigate to='/congrats' />
+                    </div>
+                )}
+            </div>
         </>
     );
 };
