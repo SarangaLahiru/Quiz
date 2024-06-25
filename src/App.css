@@ -2,6 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-    background-color: blac;
+
+@font-face {
+    font-family: 'Star-Jedi';
+    src: local(StarJedi) ,url('./components/font/Starjhol.ttf') format('truetype');
+  }
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.appcontainer{
+    background-image: url('/images/bd.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
