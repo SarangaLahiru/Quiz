@@ -98,3 +98,67 @@
         transform: translateX(-100%);
     }
 }
+
+@media (max-width: 768px) {
+    .logo h1 {
+        font-size: 1rem;
+    }
+
+    .body h2 {
+        font-size: 2rem;
+    }
+
+    .body p {
+        font-size: 1rem;
+    }
+
+    .scrolling-text {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo h1 {
+        font-size: 1.5rem;
+    }
+
+    .body h2 {
+        font-size: 3rem;
+    }
+
+    .body p {
+        font-size: 1.25rem;
+    }
+
+    .scrolling-text {
+        font-size: 1.25rem;
+    }
+    .body {
+        text-align: center;
+        padding: 20px 5%;
+    }
+    
+    .body img {
+        width: 60%;
+        max-width: 250px;
+        height: auto;
+        display: block;
+        margin: 10px auto;
+    }
+
+.body h2 {
+    font-size: 3rem; /* Responsive font size */
+    font-family: "Star Jedi Hollow";
+    font-weight: 400;
+    color: #FFFF00;
+    margin: 10px 0;
+}
+
+.body p {
+    font-family: "Cascadia Code";
+    font-size: 1.5rem; /* Responsive font size */
+    line-height: 1;
+    color: white;
+    margin-inline: 2px;
+}
+}
